@@ -10,17 +10,9 @@ cd ChemRxivFetch_project
 </code></pre>
 </li>
 
-<li><b>Установите зависимости:</b>
-<pre><code>pip install -r requirements.txt</code></pre>
-</li>
+<li><b>Убедитесь, что установлен Python 3.11 или новее (tkinter уже входит в стандартную библиотеку).</b></li>
 
 <li><b>Запустите проект:</b>
 <pre><code>python app.py</code></pre>
 </li>
 </ol>
-
-<h2>Зависимости</h2>
-<ul>
-<li>Python ≥ 3.7</li>
-<li>Tkinter (входит в стандартную библиотеку Python)</li>
-</ul>
