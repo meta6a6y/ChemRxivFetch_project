@@ -5,8 +5,8 @@
 
 <ol>
 <li><b>Клонируйте репозиторий:</b>
-<pre><code>git clone https://github.com/твоя-ссылка-на-репозиторий.git
-cd имя_проекта
+<pre><code>git clone https://github.com/meta6a6y/ChemRxivFetch_project
+cd ChemRxivFetch_project
 </code></pre>
 </li>
 
