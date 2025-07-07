@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-# ======== Цвета и шрифты ========
+# Цвета и шрифты
 BG_COLOR = "#26292D"
 PRIMARY_COLOR = "#5E23F0"
 TEXT_COLOR = "#FFFFFF"
@@ -9,11 +9,11 @@ FONT_FAMILY = "Segoe UI"
 FONT_SIZE = 12
 FONT = (FONT_FAMILY, FONT_SIZE)
 
-APP_WIDTH = 500
-APP_HEIGHT = 400
+APP_WIDTH = 620
+APP_HEIGHT = 600
 
 
-# ======== Конфигурация стилей ========
+# Конфигурация стилей
 def configure_styles(root):
     style = ttk.Style(root)
     style.theme_use("clam")

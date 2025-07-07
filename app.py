@@ -31,14 +31,17 @@ def main():
         # Пока заглушка вместо взаимодействия с API
         print(f"Выбрано тем: {selected_topics}")
         print(f"Выбран диапазон: {selected_date}")
-        print(f"Количество статей: {count}")
+        print(f"Количество статей для скачивания: {count}")
         messagebox.showinfo("Скачивание", "Файлы скачаны!")
 
     styles.configure_styles(root)
 
     # Инициализация компонентов
-    topics = ["Organic Chemistry", "Physical Chemistry", "Physics", "Materials Science"]
-    date_options = ["Последняя неделя", "Последний месяц"]
+    topics = ["Сельское хозяйство и пищевая химия", "Аналитическая химия", "Биологическая и медицинская химия",
+              "Катализ", "Химическое образование", "Химическая инженерия и промышленная химия",
+              "Химия Земли, космоса и окружающей среды", "Энергетика", "Неорганическая химия", "Химия материалов",
+              "Материаловедение", "Нанонаука"]
+    date_options = ["На прошлой неделе", "Прошлый месяц", "За последние 3 месяца", "За последние 6 месяцев"]
 
     TopicsSelection(root, topics, update_topics).pack(pady=5, padx=10, anchor="w")
     DateRangeSelection(root, date_options, update_date).pack(pady=5, padx=10, anchor="w")
