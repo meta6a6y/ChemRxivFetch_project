@@ -1,19 +1,19 @@
 import tkinter as tk
 from tkinter import ttk
 
-# Цвета и шрифты
+# Colors and fonts
 BG_COLOR = "#26292D"
 PRIMARY_COLOR = "#5E23F0"
 TEXT_COLOR = "#FFFFFF"
-FONT_FAMILY = "Segoe UI"
-FONT_SIZE = 12
+FONT_FAMILY = "Inter"
+FONT_SIZE = 10
 FONT = (FONT_FAMILY, FONT_SIZE)
+
 
 APP_WIDTH = 620
 APP_HEIGHT = 600
 
 
-# Конфигурация стилей
 def configure_styles(root):
     style = ttk.Style(root)
     style.theme_use("clam")
@@ -43,4 +43,4 @@ def configure_styles(root):
 
     root.configure(bg=BG_COLOR)
     root.resizable(False, False)
-    root.geometry(f"{APP_WIDTH}x{APP_HEIGHT}")
+    # root.geometry(f"{APP_WIDTH}x{APP_HEIGHT}")    # Disable for auto-fitting

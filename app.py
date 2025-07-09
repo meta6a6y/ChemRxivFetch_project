@@ -12,7 +12,7 @@ def main():
     root.title("ChemRxiv Fetcher MVP")
 
     selected_topics = []
-    selected_date = ""
+    selected_date = []
     count = "5"
 
     def update_topics(topics):
@@ -29,19 +29,16 @@ def main():
 
     def download():
         # Пока заглушка вместо взаимодействия с API
-        print(f"Выбрано тем: {selected_topics}")
-        print(f"Выбран диапазон: {selected_date}")
-        print(f"Количество статей для скачивания: {count}")
-        messagebox.showinfo("Скачивание", "Файлы скачаны!")
+        print(f"Topics selected: {selected_topics}")
+        print(f"Date range selected: {selected_date}")
+        print(f"Number of articles to download: {count}")
+        messagebox.showinfo("Downloading...", "Files downloaded!")
 
     styles.configure_styles(root)
 
-    # Инициализация компонентов
-    topics = ["Сельское хозяйство и пищевая химия", "Аналитическая химия", "Биологическая и медицинская химия",
-              "Катализ", "Химическое образование", "Химическая инженерия и промышленная химия",
-              "Химия Земли, космоса и окружающей среды", "Энергетика", "Неорганическая химия", "Химия материалов",
-              "Материаловедение", "Нанонаука"]
-    date_options = ["На прошлой неделе", "Прошлый месяц", "За последние 3 месяца", "За последние 6 месяцев"]
+    # Initializing components
+    topics = ["Agriculture and Food Chemistry", "Analytical Chemistry", "Biological and Medicinal Chemistry"]
+    date_options = ["Last week", "Last month", "Last 3 months", "Last 6 months"]
 
     TopicsSelection(root, topics, update_topics).pack(pady=5, padx=10, anchor="w")
     DateRangeSelection(root, date_options, update_date).pack(pady=5, padx=10, anchor="w")
