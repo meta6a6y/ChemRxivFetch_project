@@ -3,7 +3,7 @@ from ..styles import PRIMARY_COLOR, TEXT_COLOR, FONT
 
 
 class DownloadButton(tk.Frame):
-    """Styled download button matching app design."""
+    """Button to download articles."""
 
     def __init__(self, master, on_click):
         super().__init__(master, bg=master["bg"])

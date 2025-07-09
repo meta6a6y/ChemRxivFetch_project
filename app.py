@@ -28,7 +28,10 @@ def main():
         count = new_count
 
     def download():
-        # Пока заглушка вместо взаимодействия с API
+        if not validate_all():
+            messagebox.showerror("Error", "Please fix all errors before downloading")
+            return
+
         print(f"Topics selected: {selected_topics}")
         print(f"Date range selected: {selected_date}")
         print(f"Number of articles to download: {count}")
@@ -36,14 +39,45 @@ def main():
 
     styles.configure_styles(root)
 
-    # Initializing components
+    # Initialization components
     topics = ["Agriculture and Food Chemistry", "Analytical Chemistry", "Biological and Medicinal Chemistry"]
     date_options = ["Last week", "Last month", "Last 3 months", "Last 6 months"]
 
-    TopicsSelection(root, topics, update_topics).pack(pady=5, padx=10, anchor="w")
-    DateRangeSelection(root, date_options, update_date).pack(pady=5, padx=10, anchor="w")
-    InputField(root, update_count).pack(pady=5, padx=10, anchor="w")
+    # Save links to components
+    topics_component = TopicsSelection(root, topics, update_topics)
+    date_component = DateRangeSelection(root, date_options, update_date)
+    input_field = InputField(root, update_count)
+
+    topics_component.pack(pady=5, padx=10, anchor="w")
+    date_component.pack(pady=5, padx=10, anchor="w")
+    input_field.pack(pady=5, padx=10, anchor="w")
     DownloadButton(root, download).pack(pady=20)
+
+    def validate_all():
+        valid = True
+
+        # Check topics
+        if not selected_topics:
+            topics_component.set_error_state()
+            valid = False
+        else:
+            topics_component.set_normal_state()
+
+        # Check date
+        if not selected_date:
+            date_component.set_error_state()
+            valid = False
+        else:
+            date_component.set_normal_state()
+
+        # Check the number
+        if not count or not count.isdigit() or int(count) <= 0:
+            input_field.set_error_state()
+            valid = False
+        else:
+            input_field.set_normal_state()
+
+        return valid
 
     root.mainloop()
 

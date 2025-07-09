@@ -1,9 +1,9 @@
 import tkinter as tk
-from ..styles import PRIMARY_COLOR, TEXT_COLOR, FONT
+from ..styles import TEXT_COLOR, FONT
 
 
 class InputField(tk.Frame):
-    """Styled input field for specifying number of articles to download."""
+    """Input field for specifying number of articles to download."""
 
     def __init__(self, master, on_change):
         super().__init__(master, bg=master["bg"])
@@ -33,9 +33,32 @@ class InputField(tk.Frame):
         )
         self.entry.insert(0, "5")  # Default value
         self.entry.pack(padx=10, pady=5)
+        self.error_state = False
+        self.original_highlight = entry_frame["highlightbackground"]
 
         def handle_change(event):
-            on_change(self.entry.get())
+            value = self.entry.get()
+            if self.validate_number(value):
+                self.set_normal_state()
+            else:
+                self.set_error_state()
+            on_change(value)
 
         self.entry.bind("<KeyRelease>", handle_change)
-        self.entry.config(cursor="xterm")
+        self.entry.bind("<FocusOut>", lambda e: self.validate_number(self.entry.get()))
+
+    def validate_number(self, value):
+        """Checks that a value is a natural number"""
+        if not value:
+            return False
+        return value.isdigit() and int(value) > 0
+
+    def set_error_state(self):
+        if not self.error_state:
+            self.error_state = True
+            self.entry.master.config(highlightbackground="red", highlightthickness=1)
+
+    def set_normal_state(self):
+        if self.error_state:
+            self.error_state = False
+            self.entry.master.config(highlightbackground=TEXT_COLOR, highlightthickness=1)

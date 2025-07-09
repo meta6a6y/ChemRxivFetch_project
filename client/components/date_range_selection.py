@@ -6,6 +6,7 @@ class DateTile(tk.Frame):
     """One tile to select a date range."""
     def __init__(self, master, text, on_toggle):
         super().__init__(master, bd=1, relief="solid", bg=master["bg"])
+
         self.text = text
         self.on_toggle = on_toggle
         self.selected = False
@@ -36,10 +37,12 @@ class DateRangeSelection(tk.Frame):
     """Tile date range selection component allowing multiple selections."""
     def __init__(self, master, options, on_change):
         super().__init__(master, bg=master["bg"])
-        tk.Label(self, text="Date range selected:", bg=master["bg"], fg=TEXT_COLOR, font=FONT).pack(anchor="w", pady=5)
 
         self.selected_dates = set()
         self.on_change = on_change
+        self.label = tk.Label(self, text="Date range selected:", bg=master["bg"], fg=TEXT_COLOR, font=FONT)
+        self.label.pack(anchor="w", pady=5)
+        self.error_state = False
 
         grid_frame = tk.Frame(self, bg=master["bg"])
         grid_frame.pack()
@@ -55,3 +58,16 @@ class DateRangeSelection(tk.Frame):
         else:
             self.selected_dates.discard(date_option)
         self.on_change(list(self.selected_dates))
+
+    def set_error_state(self):
+        if not self.error_state:
+            self.error_state = True
+            self.label.config(fg="red")
+
+    def set_normal_state(self):
+        if self.error_state:
+            self.error_state = False
+            self.label.config(fg=TEXT_COLOR)
+
+    def has_selection(self):
+        return len(self.selected_dates) > 0
